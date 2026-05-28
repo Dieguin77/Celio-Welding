@@ -1,0 +1,11 @@
+{
+  "name": "CR Welding",
+  "short_name": "CR Welding",
+  "lang": "pt-BR",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#00010d",
+  "theme_color": "#00010d",
+  "description": "CR Welding: industrial technology with excellence, innovation, and trust.",
+  "icons": []
+}
