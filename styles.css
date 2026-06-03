@@ -1,5 +1,6 @@
 :root {
-  --brand-navy: #00010d;
+  --brand-navy: #050b1f;        /* azul escuro profundo — base cinematográfica */
+  --brand-navy-2: #0a1530;      /* navy intermediário para gradientes */
   --brand-yellow: #f1c40f;
   --brand-silver: #c7cacf;
   --brand-ice: #e5e0dd;
@@ -9,11 +10,12 @@
   --line: rgba(17, 24, 39, 0.12);
   --text: #111827;
   --muted: #4b5563;
-  --accent: #d4a300;
+  --accent: #d4a017;            /* amarelo industrial */
   --accent-2: #f1c40f;
   --accent-soft: #fff4bf;
-  --ring: rgba(212, 163, 0, 0.26);
+  --ring: rgba(212, 160, 23, 0.26);
   --shadow-soft: 0 16px 36px rgba(15, 23, 42, 0.08);
+  --overlay-navy: rgba(5, 11, 31, 0.72);
 }
 
 * {
@@ -898,4 +900,512 @@ footer {
   .logo img {
     height: 50px;
   }
+}
+
+/* ============================================================
+   CAMADA VISUAL PREMIUM — CR Welding Industrial Technology
+   Curadoria de imagens · Paleta: navy #050B1F · amarelo #D4A017 · branco
+   Tema claro corporativo + seções cinematográficas escuras.
+   ============================================================ */
+
+img {
+  max-width: 100%;
+}
+
+/* Imagem com fade gradual ao entrar (carregamento elegante) */
+.media-fade {
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+.media-fade.loaded {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------
+   1 · HERO CINEMATOGRÁFICO (home)
+   --------------------------------------------------------- */
+.section-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  grid-template-columns: 1fr;
+  min-height: 82vh;
+  padding: clamp(2rem, 6vw, 5.5rem);
+  border: 1px solid rgba(212, 160, 23, 0.22);
+  border-radius: 20px;
+  overflow: hidden;
+  color: #fff;
+  background: var(--brand-navy);
+}
+/* Camada de imagem com leve zoom ao carregar + parallax (via --hero-shift) */
+.section-hero::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  z-index: -2;
+  background-image: url("assets/brand/maksym-kaharlytskyi-u13zBF4r56A-unsplash.webp");
+  background-size: cover;
+  background-position: center calc(50% + var(--hero-shift, 0px));
+  transform: scale(1.06);
+  animation: heroZoom 16s ease-out forwards;
+  will-change: transform, background-position;
+}
+/* Overlay escuro sofisticado (~70%) + vinheta âmbar para profundidade */
+.section-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(115deg, rgba(5, 11, 31, 0.88) 0%, rgba(5, 11, 31, 0.6) 52%, rgba(5, 11, 31, 0.78) 100%),
+    radial-gradient(circle at 82% 88%, rgba(212, 160, 23, 0.2) 0%, transparent 46%);
+}
+@keyframes heroZoom {
+  from { transform: scale(1.16); }
+  to   { transform: scale(1.02); }
+}
+.section-hero .hero-content { max-width: 64ch; position: relative; z-index: 1; }
+.section-hero .kicker { color: var(--accent-2); }
+.section-hero h1 {
+  color: #fff;
+  max-width: 20ch;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+.section-hero p { color: rgba(255, 255, 255, 0.86); }
+.section-hero .hero-visual { display: none; } /* dispensa a imagem lateral antiga */
+.section-hero .metrics li {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(212, 160, 23, 0.42);
+  backdrop-filter: blur(6px);
+}
+.section-hero .metrics strong { color: #fff; }
+.section-hero .metrics span { color: rgba(255, 255, 255, 0.72); }
+.section-hero .btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+.section-hero .btn-ghost:hover { background: rgba(255, 255, 255, 0.16); }
+
+/* ---------------------------------------------------------
+   2 · HEROES INTERNOS CINEMATOGRÁFICOS (subpáginas)
+   Imagem definida por página via body[data-page] (centralizado no CSS)
+   --------------------------------------------------------- */
+.subpage-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  border-radius: 18px;
+  padding: clamp(2.2rem, 5vw, 4rem);
+  min-height: 42vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--brand-navy);
+}
+.subpage-hero::before {
+  content: "";
+  position: absolute;
+  inset: -6%;
+  z-index: -2;
+  background-image: var(--hero-img, none);
+  background-size: cover;
+  background-position: center calc(50% + var(--hero-shift, 0px));
+  transform: scale(1.04);
+}
+.subpage-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(120deg, rgba(5, 11, 31, 0.9) 0%, rgba(5, 11, 31, 0.64) 60%, rgba(5, 11, 31, 0.82) 100%),
+    radial-gradient(circle at 88% 92%, rgba(212, 160, 23, 0.16) 0%, transparent 44%);
+}
+.subpage-hero > * { position: relative; z-index: 1; }
+.subpage-hero h1 { color: #fff; text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4); }
+.subpage-hero .eyebrow { color: var(--accent-2); }
+.subpage-hero .section-lead { color: rgba(255, 255, 255, 0.85); }
+/* O hero interno usa fundo próprio, então neutraliza o do .section-block */
+.subpage-hero.section-block::before { background-image: var(--hero-img, none); }
+.subpage-hero.section-block::after { top: 0; left: 0; width: auto; height: auto; }
+
+body[data-page="about"]         .subpage-hero { --hero-img: url("assets/brand/ant-rozetsky-SLIFI67jv5k-unsplash.webp"); }
+body[data-page="services"]      .subpage-hero { --hero-img: url("assets/brand/christopher-burns-8KfCR12oeUM-unsplash.webp"); }
+body[data-page="projects"]      .subpage-hero { --hero-img: url("assets/brand/rizky-nuriman-Ws8SCmDS9mw-unsplash.webp"); }
+body[data-page="faq"]           .subpage-hero { --hero-img: url("assets/brand/christopher-burns-Wiu3w-99tNg-unsplash.webp"); }
+body[data-page="contact"]       .subpage-hero { --hero-img: url("assets/brand/victor-2PJMDIgK9EA-unsplash.webp"); }
+body[data-page="numbers-scale"] .subpage-hero { --hero-img: url("assets/brand/homa-appliances-pWUyHVJgLhg-unsplash.webp"); }
+body[data-page="sectors"]       .subpage-hero { --hero-img: url("assets/brand/ricardo-gomez-angel-41X6FwTwPh4-unsplash.webp"); }
+body[data-page="compliance"]    .subpage-hero { --hero-img: url("assets/brand/umit-yildirim-Ass0DusYDk4-unsplash.webp"); }
+body[data-page="sustainability-page"] .subpage-hero { --hero-img: url("assets/brand/sol-tZw3fcjUIpM-unsplash.webp"); }
+body[data-page="quality"]       .subpage-hero { --hero-img: url("assets/brand/rizky-nuriman-U3SdLPk3wYA-unsplash.webp"); }
+body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/sol-tZw3fcjUIpM-unsplash.webp"); }
+
+/* ---------------------------------------------------------
+   3 · CARDS DE SERVIÇO COM IMAGEM (hover zoom + overlay gradiente)
+   --------------------------------------------------------- */
+.service-card-img {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  transition: transform 380ms ease, box-shadow 380ms ease;
+}
+.service-card-img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px rgba(5, 11, 31, 0.22);
+}
+.service-card-media {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+.service-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 700ms cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.service-card-img:hover .service-card-media img { transform: scale(1.08); }
+.service-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 11, 31, 0) 38%, rgba(5, 11, 31, 0.82) 100%);
+}
+.service-card-body {
+  position: relative;
+  padding: 1.2rem 1.25rem 1.35rem;
+}
+.service-card-body h3 {
+  margin: 0 0 0.4rem;
+  color: var(--text);
+  font-size: 1.12rem;
+}
+.service-card-body p { margin: 0; color: var(--muted); line-height: 1.6; }
+/* Selo numerado sobre a imagem */
+.service-card-tag {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.9rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+}
+.service-card-tag::before {
+  content: "";
+  width: 22px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* ---------------------------------------------------------
+   4 · MOSAICO ASSIMÉTRICO (Sobre / galeria institucional)
+   --------------------------------------------------------- */
+.image-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 150px;
+  gap: 0.9rem;
+}
+.image-mosaic figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+}
+.image-mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 800ms cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.image-mosaic figure:hover img { transform: scale(1.07); }
+.image-mosaic figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.4rem 1rem 0.85rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(180deg, transparent, rgba(5, 11, 31, 0.85));
+}
+.image-mosaic .m-tall { grid-row: span 2; }
+.image-mosaic .m-wide { grid-column: span 2; }
+.image-mosaic .m-big { grid-column: span 2; grid-row: span 2; }
+
+/* ---------------------------------------------------------
+   5 · BANDA DE DIFERENCIAIS COM IMAGEM
+   --------------------------------------------------------- */
+.diff-band {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+.diff-tile {
+  position: relative;
+  isolation: isolate;
+  min-height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  color: #fff;
+  border: 1px solid rgba(212, 160, 23, 0.18);
+}
+.diff-tile img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 800ms cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.diff-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(5, 11, 31, 0.25) 0%, rgba(5, 11, 31, 0.88) 100%);
+}
+.diff-tile:hover img { transform: scale(1.08); }
+.diff-tile h3 { margin: 0 0 0.3rem; color: #fff; font-size: 1.08rem; }
+.diff-tile p { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 0.9rem; line-height: 1.5; }
+.diff-tile .diff-kicker {
+  position: absolute;
+  top: 1rem;
+  left: 1.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   6 · PORTFÓLIO MASONRY + LIGHTBOX
+   --------------------------------------------------------- */
+.portfolio-masonry {
+  column-count: 3;
+  column-gap: 0.9rem;
+}
+.portfolio-item {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 0.9rem;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.1);
+}
+.portfolio-item img {
+  width: 100%;
+  display: block;
+  transition: transform 700ms cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.portfolio-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(180deg, rgba(5, 11, 31, 0) 40%, rgba(5, 11, 31, 0.78) 100%);
+  transition: opacity 380ms ease;
+}
+.portfolio-item .portfolio-label {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.9rem;
+  z-index: 2;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 380ms ease, transform 380ms ease;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+}
+.portfolio-item:hover img { transform: scale(1.06); }
+.portfolio-item:hover::after { opacity: 1; }
+.portfolio-item:hover .portfolio-label { opacity: 1; transform: none; }
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vw;
+  background: rgba(5, 11, 31, 0.92);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 320ms ease, visibility 320ms ease;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 86vh;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  transform: scale(0.96);
+  transition: transform 360ms cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.lightbox.open img { transform: scale(1); }
+.lightbox-close {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+/* ---------------------------------------------------------
+   7 · FAIXA DE CERTIFICAÇÕES / PARCEIROS (grayscale → cor no hover)
+   --------------------------------------------------------- */
+.partner-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem;
+}
+.partner-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+  padding: 1.1rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition: filter 360ms ease, opacity 360ms ease, transform 360ms ease, box-shadow 360ms ease, border-color 360ms ease;
+}
+.partner-mark:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: translateY(-3px);
+  border-color: rgba(212, 160, 23, 0.55);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+.partner-mark strong {
+  font-family: "Titillium Web", sans-serif;
+  color: var(--text);
+  font-size: 1.02rem;
+  letter-spacing: 0.02em;
+}
+.partner-mark strong b { color: var(--accent); }
+.partner-mark span { font-size: 0.72rem; color: var(--muted); }
+
+/* ---------------------------------------------------------
+   8 · RODAPÉ COM IMAGEM INDUSTRIAL DISCRETA
+   --------------------------------------------------------- */
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  width: min(1200px, 92vw);
+  margin: 3rem auto 2.5rem;
+  border: 1px solid rgba(212, 160, 23, 0.18);
+  border-top: 1px solid rgba(212, 160, 23, 0.28);
+  border-radius: 18px;
+  padding: 2.4rem 2rem 2rem;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.82);
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  /* mesma imagem do hero → já em cache (custo ~zero) */
+  background: url("assets/brand/maksym-kaharlytskyi-u13zBF4r56A-unsplash.webp") center/cover no-repeat;
+  opacity: 0.5;
+}
+.site-footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(5, 11, 31, 0.92), rgba(5, 11, 31, 0.97));
+}
+.site-footer .footer-brand { color: #fff; }
+.site-footer .footer-title { color: #fff; }
+.site-footer p { color: rgba(255, 255, 255, 0.74); }
+.site-footer .footer-links a,
+.site-footer a { color: rgba(255, 255, 255, 0.72); }
+.site-footer .footer-links a:hover,
+.site-footer a:hover { color: var(--accent-2); }
+
+/* ---------------------------------------------------------
+   9 · RESPONSIVO da camada premium
+   --------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .service-card-img,
+  .diff-band { }
+  .diff-band { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-masonry { column-count: 2; }
+  .partner-strip { grid-template-columns: repeat(3, 1fr); }
+  .image-mosaic { grid-auto-rows: 130px; }
+}
+
+@media (max-width: 760px) {
+  .section-hero { min-height: 78vh; }
+  .subpage-hero { min-height: 38vh; }
+  .diff-band { grid-template-columns: 1fr; }
+  .diff-tile { min-height: 220px; }
+  .portfolio-masonry { column-count: 1; }
+  .partner-strip { grid-template-columns: repeat(2, 1fr); }
+  .image-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+  }
+  .image-mosaic .m-big,
+  .image-mosaic .m-wide { grid-column: span 2; }
+  .image-mosaic .m-big { grid-row: span 2; }
+}
+
+/* Acessibilidade: respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .section-hero::before { animation: none; }
+  .media-fade,
+  .service-card-media img,
+  .image-mosaic img,
+  .diff-tile img,
+  .portfolio-item img,
+  .lightbox img { transition: none; }
 }
