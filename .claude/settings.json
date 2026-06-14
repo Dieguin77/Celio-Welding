@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv \"WhatsApp Image 2026-06-10 at 17.00.41.jpeg\" \"foto-cr-01.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-06-10 at 17.02.03.jpeg\" \"foto-cr-02.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-06-10 at 17.02.30.jpeg\" \"foto-cr-03.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-06-10 at 17.03.05.jpeg\" \"foto-cr-04.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-06-10 at 17.03.24.jpeg\" \"foto-cr-05.jpeg\")",
+      "Bash(sed 's/url\\(\"//')",
+      "Bash(sed 's/\"\\).*//')"
+    ]
+  }
+}

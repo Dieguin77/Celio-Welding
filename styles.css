@@ -60,10 +60,21 @@ body {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  background: var(--brand-navy);
+  border-radius: 10px;
+  padding: 4px 14px 4px 8px;
+  border: 1px solid rgba(212, 160, 23, 0.22);
+  box-shadow: 0 2px 10px rgba(5, 11, 31, 0.18);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.logo:hover {
+  border-color: rgba(212, 160, 23, 0.45);
+  box-shadow: 0 4px 18px rgba(5, 11, 31, 0.28);
 }
 
 .logo img {
-  height: 56px;
+  height: 50px;
   width: auto;
   display: block;
 }
@@ -804,13 +815,14 @@ footer {
   font-size: 0.92rem;
 }
 
-.reveal {
+/* Animação de entrada só ativa quando JS carrega — fallback: seções visíveis sem JS */
+.js-ready .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 650ms ease, transform 650ms ease;
 }
 
-.reveal.visible {
+.js-ready .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -946,22 +958,22 @@ img {
   position: absolute;
   inset: -10%;
   z-index: -2;
-  background-image: url("assets/brand/maksym-kaharlytskyi-u13zBF4r56A-unsplash.webp");
+  background-image: url("assets/brand/foto-ambiente-01.png");
   background-size: cover;
-  background-position: center calc(50% + var(--hero-shift, 0px));
+  background-position: center calc(35% + var(--hero-shift, 0px));
   transform: scale(1.06);
   animation: heroZoom 16s ease-out forwards;
   will-change: transform, background-position;
 }
-/* Overlay escuro sofisticado (~70%) + vinheta âmbar para profundidade */
+/* Overlay (~45–65%) + vinheta âmbar — foto visível, texto legível */
 .section-hero::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(115deg, rgba(5, 11, 31, 0.88) 0%, rgba(5, 11, 31, 0.6) 52%, rgba(5, 11, 31, 0.78) 100%),
-    radial-gradient(circle at 82% 88%, rgba(212, 160, 23, 0.2) 0%, transparent 46%);
+    linear-gradient(115deg, rgba(5, 11, 31, 0.65) 0%, rgba(5, 11, 31, 0.38) 52%, rgba(5, 11, 31, 0.56) 100%),
+    radial-gradient(circle at 82% 88%, rgba(212, 160, 23, 0.28) 0%, transparent 46%);
 }
 @keyframes heroZoom {
   from { transform: scale(1.16); }
@@ -1024,8 +1036,8 @@ img {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(120deg, rgba(5, 11, 31, 0.9) 0%, rgba(5, 11, 31, 0.64) 60%, rgba(5, 11, 31, 0.82) 100%),
-    radial-gradient(circle at 88% 92%, rgba(212, 160, 23, 0.16) 0%, transparent 44%);
+    linear-gradient(120deg, rgba(5, 11, 31, 0.70) 0%, rgba(5, 11, 31, 0.44) 60%, rgba(5, 11, 31, 0.62) 100%),
+    radial-gradient(circle at 88% 92%, rgba(212, 160, 23, 0.22) 0%, transparent 44%);
 }
 .subpage-hero > * { position: relative; z-index: 1; }
 .subpage-hero h1 { color: #fff; text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4); }
@@ -1035,17 +1047,17 @@ img {
 .subpage-hero.section-block::before { background-image: var(--hero-img, none); }
 .subpage-hero.section-block::after { top: 0; left: 0; width: auto; height: auto; }
 
-body[data-page="about"]         .subpage-hero { --hero-img: url("assets/brand/ant-rozetsky-SLIFI67jv5k-unsplash.webp"); }
-body[data-page="services"]      .subpage-hero { --hero-img: url("assets/brand/christopher-burns-8KfCR12oeUM-unsplash.webp"); }
-body[data-page="projects"]      .subpage-hero { --hero-img: url("assets/brand/rizky-nuriman-Ws8SCmDS9mw-unsplash.webp"); }
-body[data-page="faq"]           .subpage-hero { --hero-img: url("assets/brand/christopher-burns-Wiu3w-99tNg-unsplash.webp"); }
-body[data-page="contact"]       .subpage-hero { --hero-img: url("assets/brand/victor-2PJMDIgK9EA-unsplash.webp"); }
-body[data-page="numbers-scale"] .subpage-hero { --hero-img: url("assets/brand/homa-appliances-pWUyHVJgLhg-unsplash.webp"); }
-body[data-page="sectors"]       .subpage-hero { --hero-img: url("assets/brand/ricardo-gomez-angel-41X6FwTwPh4-unsplash.webp"); }
-body[data-page="compliance"]    .subpage-hero { --hero-img: url("assets/brand/umit-yildirim-Ass0DusYDk4-unsplash.webp"); }
-body[data-page="sustainability-page"] .subpage-hero { --hero-img: url("assets/brand/sol-tZw3fcjUIpM-unsplash.webp"); }
-body[data-page="quality"]       .subpage-hero { --hero-img: url("assets/brand/rizky-nuriman-U3SdLPk3wYA-unsplash.webp"); }
-body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/sol-tZw3fcjUIpM-unsplash.webp"); }
+body[data-page="about"]         .subpage-hero { --hero-img: url("assets/brand/foto-cr-11.jpeg"); }
+body[data-page="services"]      .subpage-hero { --hero-img: url("assets/brand/foto-cr-06.jpeg"); }
+body[data-page="projects"]      .subpage-hero { --hero-img: url("assets/brand/foto-cr-13.jpeg"); }
+body[data-page="faq"]           .subpage-hero { --hero-img: url("assets/brand/foto-cr-01.jpeg"); }
+body[data-page="contact"]       .subpage-hero { --hero-img: url("assets/brand/foto-cr-09.jpeg"); }
+body[data-page="numbers-scale"] .subpage-hero { --hero-img: url("assets/brand/foto-cr-08.jpeg"); }
+body[data-page="sectors"]       .subpage-hero { --hero-img: url("assets/brand/foto-cr-04.jpeg"); }
+body[data-page="compliance"]    .subpage-hero { --hero-img: url("assets/brand/foto-cr-12.jpeg"); }
+body[data-page="sustainability-page"] .subpage-hero { --hero-img: url("assets/brand/foto-cr-02.jpeg"); }
+body[data-page="quality"]       .subpage-hero { --hero-img: url("assets/brand/foto-ambiente-01.png"); }
+body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/foto-cr-03.jpeg"); }
 
 /* ---------------------------------------------------------
    3 · CARDS DE SERVIÇO COM IMAGEM (hover zoom + overlay gradiente)
@@ -1166,7 +1178,7 @@ body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/so
 }
 .diff-tile {
   position: relative;
-  isolation: isolate;
+  z-index: 0;
   min-height: 260px;
   border-radius: 16px;
   overflow: hidden;
@@ -1179,7 +1191,7 @@ body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/so
 .diff-tile img {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1189,8 +1201,12 @@ body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/so
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   background: linear-gradient(180deg, rgba(5, 11, 31, 0.25) 0%, rgba(5, 11, 31, 0.88) 100%);
+}
+.diff-tile > div {
+  position: relative;
+  z-index: 2;
 }
 .diff-tile:hover img { transform: scale(1.08); }
 .diff-tile h3 { margin: 0 0 0.3rem; color: #fff; font-size: 1.08rem; }
@@ -1199,6 +1215,7 @@ body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/so
   position: absolute;
   top: 1rem;
   left: 1.2rem;
+  z-index: 2;
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   color: var(--accent-2);
@@ -1352,8 +1369,7 @@ body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/so
   position: absolute;
   inset: 0;
   z-index: -2;
-  /* mesma imagem do hero → já em cache (custo ~zero) */
-  background: url("assets/brand/maksym-kaharlytskyi-u13zBF4r56A-unsplash.webp") center/cover no-repeat;
+  background: url("assets/brand/foto-cr-01.jpeg") center/cover no-repeat;
   opacity: 0.5;
 }
 .site-footer::after {
