@@ -21,7 +21,15 @@
       "Bash(node -e ' *)",
       "Bash(node)",
       "Bash(node --check d:/celio-mamede/script.js)",
-      "Bash(git -C d:/celio-mamede add script.js)"
+      "Bash(git -C d:/celio-mamede add script.js)",
+      "Bash(git -C d:/celio-mamede remote -v)",
+      "Bash(git -C d:/celio-mamede status)",
+      "Bash(git -C d:/celio-mamede log --oneline origin/main..HEAD)",
+      "Bash(git -C d:/celio-mamede push origin main)",
+      "Bash(grep -E \"\\\\.\\(txt|md|data|csv|xml\\)$\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c \"print\\('ok'\\)\")",
+      "Bash(node -e \"console.log\\('node ok'\\)\")"
     ]
   }
 }
