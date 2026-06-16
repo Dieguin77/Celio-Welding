@@ -29,7 +29,8 @@
       "Bash(grep -E \"\\\\.\\(txt|md|data|csv|xml\\)$\")",
       "Bash(python3 -c ' *)",
       "Bash(python -c \"print\\('ok'\\)\")",
-      "Bash(node -e \"console.log\\('node ok'\\)\")"
+      "Bash(node -e \"console.log\\('node ok'\\)\")",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
