@@ -56,55 +56,78 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(12px);
-  background: rgba(246, 247, 244, 0.85);
-  border-bottom: 1px solid var(--line);
+  background: #ffffff;
+  min-height: 140px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 6vw;
+  padding: 0 6vw;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+  gap: 2rem;
+}
+
+.topbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 160, 23, 0.25) 8%,
+    #D4A017 28%,
+    #D4A017 72%,
+    rgba(212, 160, 23, 0.25) 92%,
+    transparent 100%
+  );
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  background: var(--brand-navy);
-  border-radius: 12px;
-  padding: 6px 16px 6px 10px;
-  border: 1px solid rgba(212, 160, 23, 0.28);
-  box-shadow: 0 3px 14px rgba(5, 11, 31, 0.22), inset 0 -2px 0 rgba(212, 160, 23, 0.36);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  padding: 6px 8px 6px 4px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: opacity 0.24s ease, filter 0.24s ease;
 }
 
 .logo:hover {
-  border-color: rgba(212, 160, 23, 0.52);
-  box-shadow: 0 6px 22px rgba(5, 11, 31, 0.32), inset 0 -2px 0 rgba(212, 160, 23, 0.52);
+  opacity: 0.88;
+  filter:
+    drop-shadow(0 0 10px rgba(212, 160, 23, 0.35))
+    drop-shadow(0 3px 10px rgba(0, 0, 0, 0.12));
 }
 
 .logo img {
-  height: 56px;
+  height: 148px;
   width: auto;
   display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.07));
 }
 
 nav {
   display: flex;
-  gap: 1rem;
+  gap: 1.6rem;
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 nav a {
-  color: var(--muted);
+  color: #3a3a3a;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
 }
 
 nav a:hover {
-  color: var(--text);
+  color: #D4A017;
 }
 
 .nav-link {
@@ -112,7 +135,8 @@ nav a:hover {
 }
 
 .nav-link.active {
-  color: var(--text);
+  color: #111111;
+  font-weight: 600;
 }
 
 .nav-link.active::after {
@@ -122,7 +146,7 @@ nav a:hover {
   right: 0;
   bottom: -0.35rem;
   height: 2px;
-  background: var(--accent-2);
+  background: #D4A017;
 }
 
 .nav-cta.active {
@@ -131,31 +155,35 @@ nav a:hover {
 
 .lang-switch {
   display: inline-flex;
-  gap: 0.35rem;
+  gap: 0.3rem;
   align-items: center;
-  margin-left: 0.35rem;
+  margin-left: 0.5rem;
 }
 
 .lang-btn {
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--muted);
-  border-radius: 6px;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.78rem;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: rgba(0, 0, 0, 0.03);
+  color: #666666;
+  border-radius: 5px;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.75rem;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  letter-spacing: 0.04em;
 }
 
 .lang-btn:hover {
-  color: var(--text);
-  border-color: rgba(241, 196, 15, 0.72);
+  color: #D4A017;
+  border-color: rgba(212, 160, 23, 0.5);
+  background: rgba(212, 160, 23, 0.06);
 }
 
 .lang-btn.active {
   background: var(--accent-2);
-  color: #1f2937;
+  color: #1a1a1a;
   border-color: var(--accent-2);
+  box-shadow: none;
 }
 
 main {
@@ -264,6 +292,20 @@ section {
   color: var(--muted);
   line-height: 1.75;
   margin: 0 0 1rem;
+}
+
+/* About – QUEM SOMOS: título e parágrafos */
+.about-story-title {
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+}
+
+.about-story-body p {
+  color: var(--text);
+  line-height: 1.84;
+  margin-bottom: 1.45rem;
 }
 
 .stat-strip {
@@ -461,11 +503,13 @@ section {
 .footer-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr 0.8fr;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 
 .footer-grid-wide {
-  grid-template-columns: 1.2fr 1fr 1fr 0.8fr;
+  grid-template-columns: 1.5fr 1fr 1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: start;
 }
 
 .footer-brand,
@@ -832,6 +876,25 @@ footer {
   background: linear-gradient(180deg, #ffffff, #f9faf8);
 }
 
+/* About – cards de diferenciais: altura uniforme por coluna */
+body[data-page="about"] .feature-grid.four-up .info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+/* About – stat-cards de competência: altura uniforme e legibilidade do texto */
+body[data-page="about"] .stat-strip .stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+body[data-page="about"] .stat-strip .stat-card span {
+  color: var(--text);
+  line-height: 1.78;
+}
+
 /* Animação de entrada só ativa quando JS carrega — fallback: seções visíveis sem JS */
 .js-ready .reveal {
   opacity: 0;
@@ -845,6 +908,20 @@ footer {
 }
 
 @media (max-width: 1024px) {
+  .topbar {
+    padding: 0 4vw;
+    gap: 1.4rem;
+    min-height: 136px;
+  }
+
+  .logo img {
+    height: 126px;
+  }
+
+  nav {
+    gap: 1.1rem;
+  }
+
   .hero {
     grid-template-columns: 1fr;
   }
@@ -861,7 +938,8 @@ footer {
   .timeline-grid,
   .stat-strip,
   .contact-layout,
-  .footer-grid {
+  .footer-grid,
+  .footer-grid-wide {
     grid-template-columns: 1fr;
   }
 
@@ -885,12 +963,19 @@ footer {
 @media (max-width: 760px) {
   .topbar {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.55rem;
+    min-height: unset;
+    padding: 0.9rem 5vw;
+  }
+
+  .logo img {
+    height: 76px;
   }
 
   nav {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.9rem;
   }
 
   .lang-switch {
@@ -915,7 +1000,8 @@ footer {
   .timeline-grid,
   .stat-strip,
   .contact-layout,
-  .footer-grid {
+  .footer-grid,
+  .footer-grid-wide {
     grid-template-columns: 1fr;
   }
 
@@ -924,10 +1010,6 @@ footer {
   .split,
   .brand-gallery {
     grid-template-columns: 1fr;
-  }
-
-  .logo img {
-    height: 46px;
   }
 }
 
@@ -1375,6 +1457,15 @@ body[data-page="careers"]       .subpage-hero { --hero-img: url("assets/brand/fo
 /* ---------------------------------------------------------
    8 · RODAPÉ COM IMAGEM INDUSTRIAL DISCRETA
    --------------------------------------------------------- */
+.footer-logo {
+  height: 52px;
+  width: auto;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.92;
+  filter: brightness(1.05);
+}
+
 .site-footer {
   position: relative;
   isolation: isolate;
