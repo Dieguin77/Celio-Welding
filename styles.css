@@ -396,6 +396,23 @@ section {
   gap: 1rem;
 }
 
+.contact-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.contact-icon-row h3 {
+  margin: 0;
+}
+
+.contact-icon-row svg {
+  flex-shrink: 0;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
 .field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
