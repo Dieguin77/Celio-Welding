@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  viewBox="110 97 285 130"
+  role="img"
+  aria-label="CR Welding — Industrial Construction">
+
+  <!-- Logo oficial CR Welding | Gerado a partir de Vector cr welding.ai (PDF-1.6) -->
+
+  <!-- Símbolo CR — shape esquerda -->
+  <path fill="#E4AC32" d="M 235.786 127.124 L 218.034 127.124 L 218.034 115.696 L 240.89 115.696 L 229.855 104.661 C 229.603 104.409 229.261 104.267 228.905 104.267 L 208.468 104.267 C 207.439 104.267 206.606 105.101 206.606 106.129 L 206.606 136.69 C 206.606 137.718 207.439 138.552 208.468 138.552 L 247.213 138.552 L 240.89 132.229 Z"/>
+
+  <!-- Símbolo CR — shape direita -->
+  <path fill="#E4AC32" d="M 273.832 115.696 L 240.89 115.696 L 252.318 127.124 L 263.746 127.124 L 263.746 138.552 L 247.213 138.552 L 252.318 143.658 L 258.319 149.658 C 258.525 149.865 258.805 149.981 259.097 149.981 L 273.832 149.981 C 274.573 149.981 275.174 149.38 275.174 148.638 L 275.174 117.038 C 275.174 116.297 274.573 115.696 273.832 115.696 Z"/>
+
+  <!-- CR Welding -->
+  <text
+    x="127.522" y="187.472"
+    font-family="'Space Grotesk','Blatant','Segoe UI',Arial,sans-serif"
+    font-weight="700"
+    font-size="44.3974"
+    fill="#00010D"
+    letter-spacing="1"
+  >CR Welding</text>
+
+  <!-- Industrial Construction -->
+  <text
+    x="152.629" y="210.924"
+    font-family="'Courier New','Source Code Variable','Source Code Pro',monospace"
+    font-size="13.3766"
+    fill="#00010D"
+    letter-spacing="0.3"
+  >Industrial Construction</text>
+
+</svg>
