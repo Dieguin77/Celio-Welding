@@ -1,1 +1,39 @@
+# Dependências
 node_modules/
+package-lock.json
+
+# Scripts utilitários de desenvolvimento (não fazem parte do site)
+analyze-inspiration.js
+extract-pages.js
+extract-pdf.js
+prepare-brand-assets.js
+sample-colors.js
+optimize-images.js
+
+# Assets de inspiração e referência (uso interno)
+assets/inspiration-pages/
+assets/pages/
+
+# Documentos do cliente (confidenciais)
+*.pdf
+conteudo-extraido.txt
+inspiracao-extraida.txt
+
+# Configuração do assistente de desenvolvimento
+.claude/
+CLAUDE.md
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
