@@ -37,3 +37,7 @@ desktop.ini
 # Logs
 *.log
 npm-debug.log*
+
+# Arquivo-fonte do logotipo e captura de referência do cliente (uso interno)
+assets/brand/*.ai
+assets/brand/foto-cr-14-ref.jpeg
